@@ -9,6 +9,10 @@ const app = express();
 // Set up middleware to parse JSON bodies
 app.use(json());
 
+app.get('/', (req, res) => {
+    res.json('Welcome the Ayana Mailer!');
+})
+
 // Define a route to send emails
 app.post('/send-email', async (req, res) => {
     try {
