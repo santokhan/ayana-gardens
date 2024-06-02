@@ -12,10 +12,15 @@ let transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST || "smtp.gmail.com",
   port: process.env.EMAIL_PORT || 587,
   secure: false,
+  tls: {
+    rejectUnauthorized: false
+},
   auth: {
     user: process.env.EMAIL_USER || "", // Your email address
     pass: process.env.EMAIL_PASS || "", // Your email password (consider using environment variables for security)
   },
+  debug: true,
+  logger: true,
 });
 
 async function sendEmail(data, callBack = () => { }) {
@@ -33,6 +38,7 @@ async function sendEmail(data, callBack = () => { }) {
   // return
 
   recipients.forEach((recipient) => {
+    console.log('Sending email to: ',recipient);
     transporter.sendMail(
       {
         to: recipient, // List of recipients
