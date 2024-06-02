@@ -1,10 +1,13 @@
 import { configDotenv } from 'dotenv';
 import express, { json } from 'express';
 import sendEmail from './src/sender.js';
+import cors from 'cors'
 
 configDotenv();
 
 const app = express();
+
+app.use(cors());
 
 // Set up middleware to parse JSON bodies
 app.use(json());
