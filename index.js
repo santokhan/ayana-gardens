@@ -12,12 +12,12 @@ app.use(json());
 // Define a route to send emails
 app.post('/send-email', async (req, res) => {
     try {
-        const { first_name, last_name, email, phone, message } = req.body;
+        const { first_name, last_name, email, phone, nationality, message } = req.body;
         // console.log('Email sent:', req.body);
 
         if (email || phone) {
             // Your Nodemailer code to send the email goes here
-            await sendEmail({ first_name, last_name, email, phone, message }, () => {
+            await sendEmail({ first_name, last_name, email, phone, nationality, message }, () => {
                 res.status(200).json({ message: 'Thank you for your interest. We will connect with you shortly.' });
             });
         } else {
