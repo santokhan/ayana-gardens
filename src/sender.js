@@ -5,8 +5,8 @@ import { makeEmail } from "./email-template.js";
 configDotenv();
 
 const recipients = [
-  // "arsh@aos.ae",
-  // "info@ayanagardens.com",
+  "arsh@aos.ae",
+  "info@ayanagardens.com",
   "santokhan1999@outlook.com",
 ];
 
