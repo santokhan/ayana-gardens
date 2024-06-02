@@ -18,7 +18,7 @@ app.post('/send-email', async (req, res) => {
         if (email || phone) {
             // Your Nodemailer code to send the email goes here
             await sendEmail({ first_name, last_name, email, phone, message }, () => {
-                res.status(200).json({ message: 'Thanks you for your interest 2.' });
+                res.status(200).json({ message: 'Thank you for your interest. We will connect with you shortly.' });
             });
         } else {
             return res.status(400).json({ error: 'Missing required data. Please provide email, phone.' });

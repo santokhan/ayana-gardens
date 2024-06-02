@@ -1,5 +1,8 @@
+import { configDotenv } from "dotenv";
 import nodemailer from "nodemailer";
 import { makeEmail } from "./email-template.js";
+
+configDotenv();
 
 const recipients = [
   // "arsh@aos.ae",
@@ -14,10 +17,10 @@ let transporter = nodemailer.createTransport({
   secure: false,
   tls: {
     rejectUnauthorized: false
-},
+  },
   auth: {
-    user: process.env.EMAIL_USER || "", // Your email address
-    pass: process.env.EMAIL_PASS || "", // Your email password (consider using environment variables for security)
+    user: process.env.EMAIL_USER || "aosayana@gmail.com", // Your email address
+    pass: process.env.EMAIL_PASS || "mrts haal fdhf qikm", // Your email password (consider using environment variables for security)
   },
   debug: true,
   logger: true,
@@ -26,19 +29,14 @@ let transporter = nodemailer.createTransport({
 async function sendEmail(data, callBack = () => { }) {
   const minifiedHTMLEmail = makeEmail(data);
 
-  // console.log(minifiedHTMLEmail, {
-  //   host: process.env.EMAIL_HOST || "smtp.gmail.com",
-  //   port: process.env.EMAIL_PORT || 587,
-  //   secure: false,
-  //   auth: {
-  //     user: process.env.EMAIL_USER || "", // Your email address
-  //     pass: process.env.EMAIL_PASS || "", // Your email password (consider using environment variables for security)
-  //   },
-  // });
-  // return
+  // console.log(
+  //   // minifiedHTMLEmail, 
+  //   transporter.options
+  // );
+  // // return
 
   recipients.forEach((recipient) => {
-    console.log('Sending email to: ',recipient);
+    console.log('Sending email to: ', recipient);
     transporter.sendMail(
       {
         to: recipient, // List of recipients
