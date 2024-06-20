@@ -6,7 +6,7 @@ configDotenv();
 
 const recipients = [
   "arsh@aos.ae",
-  "info@ayanagardens.com",
+  // "info@ayanagardens.com",
   "santokhan1999@outlook.com",
 ];
 
